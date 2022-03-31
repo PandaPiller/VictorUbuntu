@@ -3,10 +3,11 @@ import java.net.*;
 
 public class myServer {
 	public static void main(String[] args) throws IOException{
-		ServerSocket ss = new ServerSocket (6666);
+		ServerSocket ss = new ServerSocket(6666);
 		try{
 			Socket s = ss.accept(); //establishes connection				
 			BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+			//DataInputStream in = new DataInputStream(s.getInputStream());
 			DataOutputStream out = new DataOutputStream(s.getOutputStream());
 			
 			String str = (String)in.readLine();

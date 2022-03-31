@@ -1,5 +1,5 @@
 public class Server{
-    String Type; //serve
+    String Type; 
     int ID;
     String State;
     int bootupTime;
@@ -18,5 +18,19 @@ public class Server{
         this.coreNo = Integer.parseInt(cores);
         this.memory = Integer.parseInt(mem);
         this.diskSize = Integer.parseInt(disk);
+    }
+
+    public static Server fromString(String line){
+        String[] split = line.split(" ");
+        var server = new Server(line, line, line, line, line, line, line, line);
+        server.ID = Integer.parseInt(split[1]);
+        server.Type = split[2];
+        server.bootupTime = Integer.parseInt(split[3]);
+        server.hourlyRate = Integer.parseInt(split[4]);
+        server.coreNo = Integer.parseInt(split[5]);
+        server.memory = Integer.parseInt(split[6]);
+        server.diskSize = Integer.parseInt(split[7]);
+
+        return server;
     }
 }
