@@ -3,15 +3,15 @@ import java.net.*;
 
 public class myServer {
 	public static void main(String[] args) throws IOException{
+		Socket s = null;
 		ServerSocket ss = new ServerSocket(6666);
 		try{
-			Socket s = ss.accept(); //establishes connection				
-			BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-			//DataInputStream in = new DataInputStream(s.getInputStream());
-			DataOutputStream out = new DataOutputStream(s.getOutputStream());
+			s = ss.accept(); //establishes connection				
+			BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream())); //Input written from Server with Input Stream
+			DataOutputStream out = new DataOutputStream(s.getOutputStream()); //Data will be outputted from Server with Output Stream
 			
-			String str = (String)in.readLine();
-			System.out.println("Received: " + str);
+			String str = (String)in.readLine(); //Gathering Information from Client
+			System.out.println("Received: " + str); //Server received Information - success
 			
 			out.write(("OK\n").getBytes());
 			System.out.println("Sent: OK");
